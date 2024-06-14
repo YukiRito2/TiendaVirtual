@@ -34,7 +34,7 @@ $(document).ready(function () {
         setTimeout(mostrarTodo, 400);
     });
 
-    $('.agregar').click( function(e){
+    $('.agregar').click(function (e) {
         e.preventDefault();
         const id = $(this).data('id');
         items = {
@@ -44,23 +44,23 @@ $(document).ready(function () {
         localStorage.setItem('productos', JSON.stringify(productos));
         mostrar();
     })
-    $('#btnCarrito').click(function(e){
-        $('#btnCarrito').attr('href','carrito.php');
+    $('#btnCarrito').click(function (e) {
+        $('#btnCarrito').attr('href', 'carrito.php');
     })
-    $('#btnVaciar').click(function(){
+    $('#btnVaciar').click(function () {
         localStorage.removeItem("productos");
         $('#tblCarrito').html('');
         $('#total_pagar').text('0.00');
     })
     //categoria
-    $('#abrirCategoria').click(function(){
+    $('#abrirCategoria').click(function () {
         $('#categorias').modal('show');
     })
     //productos
     $('#abrirProducto').click(function () {
         $('#productos').modal('show');
     })
-    $('.eliminar').click(function(e){
+    $('.eliminar').click(function (e) {
         e.preventDefault();
         if (confirm('Esta seguro de eliminar?')) {
             this.submit();
@@ -68,7 +68,7 @@ $(document).ready(function () {
     })
 });
 
-function mostrar(){
+function mostrar() {
     if (localStorage.getItem("productos") != null) {
         let array = JSON.parse(localStorage.getItem('productos'));
         if (array) {
@@ -76,3 +76,10 @@ function mostrar(){
         }
     }
 }
+
+
+$(document).ready(function () {
+    $('.carousel').carousel({
+        interval: 2500 // Intervalo en milisegundos (3 segundos en este caso)
+    });
+});

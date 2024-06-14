@@ -24,7 +24,8 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Vida Informático</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -33,7 +34,8 @@
                         <?php
                         $query = mysqli_query($conexion, "SELECT * FROM categorias");
                         while ($data = mysqli_fetch_assoc($query)) { ?>
-                            <a href="#" class="nav-link" category="<?php echo $data['categoria']; ?>"><?php echo $data['categoria']; ?></a>
+                        <a href="#" class="nav-link"
+                            category="<?php echo $data['categoria']; ?>"><?php echo $data['categoria']; ?></a>
                         <?php } ?>
                     </ul>
                 </div>
@@ -41,12 +43,33 @@
         </nav>
     </div>
     <!-- Header-->
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Tienda Online</h1>
-                <p class="lead fw-normal text-white-50 mb-0">Lorem ipsum dolor sit amet.</p>
+    <header class="bg-dark py-5 position-relative">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./assets/img/Vestido2.jpg" style="width:fit-content;" class="d-block w-100"
+                        alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/Vestido.png" style="width:fit-content;" class="d-block w-100"
+                        alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/polo.jpg" style="width:fit-content;" class="d-block w-100" alt="First slide">
+                </div>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+        <div class="header-content">
+            <h1 class="display-4 fw-bolder">Tienda Online</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Viste tu estilo, inspira tu vida</p>
         </div>
     </header>
     <section class="py-5">
@@ -57,40 +80,42 @@
                 $result = mysqli_num_rows($query);
                 if ($result > 0) {
                     while ($data = mysqli_fetch_assoc($query)) { ?>
-                        <div class="col mb-5 productos" category="<?php echo $data['categoria']; ?>">
-                            <div class="card h-100">
-                                <!-- Sale badge-->
-                                <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem"><?php echo ($data['precio_normal'] > $data['precio_rebajado']) ? 'Oferta' : ''; ?></div>
-                                <!-- Product image-->
-                                <img class="card-img-top" src="assets/img/<?php echo $data['imagen']; ?>" alt="..." />
-                                <!-- Product details-->
-                                <div class="card-body p-4">
-                                    <div class="text-center">
-                                        <!-- Product name-->
-                                        <h5 class="fw-bolder"><?php echo $data['nombre'] ?></h5>
-                                        <p><?php echo $data['descripcion']; ?></p>
-                                        <!-- Product reviews-->
-                                        <div class="d-flex justify-content-center small text-warning mb-2">
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                            <div class="bi-star-fill"></div>
-                                        </div>
-                                        <!-- Product price-->
-                                        <span class="text-muted text-decoration-line-through"><?php echo $data['precio_normal'] ?></span>
-                                        <?php echo $data['precio_rebajado'] ?>
-                                    </div>
+                <div class="col mb-5 productos" category="<?php echo $data['categoria']; ?>">
+                    <div class="card h-100">
+                        <!-- Sale badge-->
+                        <div class="badge bg-danger text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                            <?php echo ($data['precio_normal'] > $data['precio_rebajado']) ? 'Oferta' : ''; ?></div>
+                        <!-- Product image-->
+                        <img class="card-img-top" src="assets/img/<?php echo $data['imagen']; ?>" alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder"><?php echo $data['nombre'] ?></h5>
+                                <p><?php echo $data['descripcion']; ?></p>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
                                 </div>
-                                <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar" data-id="<?php echo $data['id']; ?>" href="#">Agregar</a></div>
-                                </div>
+                                <!-- Product price-->
+                                <span
+                                    class="text-muted text-decoration-line-through"><?php echo $data['precio_normal'] ?></span>
+                                <?php echo $data['precio_rebajado'] ?>
                             </div>
                         </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto agregar"
+                                    data-id="<?php echo $data['id']; ?>" href="#">Agregar</a></div>
+                        </div>
+                    </div>
+                </div>
                 <?php  }
                 } ?>
-
             </div>
         </div>
     </section>
